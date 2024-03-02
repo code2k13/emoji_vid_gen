@@ -110,3 +110,17 @@ VIDEO_HEIGHT=896
 
 Note: This setting does affect the output of stable diffusion. Not all resolutions work that well. For  more information checkout this
  https://replicate.com/guides/stable-diffusion/how-to-use/ . Stable Diffusion seems to work well with square aspect ratios.
+
+
+## Known issues
+
+You will see this error message when using default TTS engine. 
+
+```bash
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyttsx3/drivers/espeak.py", line 171, in _onSynth
+    self._proxy.notify('finished-utterance', completed=True)
+ReferenceError: weakly-referenced object no longer exists
+```
+
+Ignore this error for now as it does not affect the output.

@@ -88,6 +88,6 @@ class ScriptParser:
                     video_clips.append(emoji_clip)
 
         final_clip = concatenate_videoclips(video_clips)
-        final_clip.write_videofile(output_file, fps=30)
+        final_clip.write_videofile(output_file, fps=30,threads=1)
         print(f"Video generated successfully: {output_file}")
         return output_file
