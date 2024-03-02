@@ -7,7 +7,7 @@ import os
 
 class AudioLDMTxt2Audio(BaseText2Audio):
 
-    USE_CUDA = os.environ['USE_CUDA']
+    USE_CUDA = os.getenv('USE_CUDA')
 
     def __generate_audio_effect(self, model, text: str):
         random_filename = create_temp_file(".wav")

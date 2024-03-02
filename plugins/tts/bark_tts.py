@@ -8,7 +8,7 @@ from utils import create_temp_file, is_valid_filename
 
 class BarkTTS(BaseTTS):
 
-    USE_CUDA = os.environ['USE_CUDA']
+    USE_CUDA = os.getenv('USE_CUDA')
 
     def __generate_audio(self, model, processor, text, voice="v2/en_speaker_6"):
         random_filename = create_temp_file(".wav")

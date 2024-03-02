@@ -1,28 +1,28 @@
 Image:  A single trophy kept on table. comic book style.
 Audio: Upbeat introduction music for cartoon show.
 Title: Emoji Quiz Showdown
-🎤: "Welcome to the Emoji Quiz Showdown! Are you ready to test your knowledge?"
-🐱: "Meow! I'm ready!"
-🐶: "Woof! Let's do this!"
+🎤: Welcome to the Emoji Quiz Showdown! Are you ready to test your knowledge?
+🐱: Meow! I'm ready!
+🐶: Woof! Let's do this!
 Image: Cartoon illustration of the Eiffel Tower.
-🎤: "First question What is the capital of France?"
+🎤: First question What is the capital of France?
 Audio: A upbeat funny music.
-🐱: "Paris!"
+🐱: Paris!
 Audio: an uplifting fanfare, reminiscent of victory, triumph and achievement.
 Image: Cartoon illustration of Mount Everest.
-🎤: "Correct! One point for the cat! Next question  What is the tallest mountain in the world?"
+🎤: Correct! One point for the cat! Next question  What is the tallest mountain in the world?
 Audio: A upbeat funny music.
-🐶: "Mount Everest!"
+🐶: Mount Everest!
 Audio: an uplifting fanfare, reminiscent of victory, triumph and achievement.
 Image: Cartoon illustration of a water molecule.
-🎤: "Right again! One point for the dog! Next question  What is the chemical symbol for water?"
+🎤: Right again! One point for the dog! Next question  What is the chemical symbol for water?
 Audio: A upbeat funny music.
-🐱: "H2O!"
+🐱: H2O!
 Audio: an uplifting fanfare, reminiscent of victory, triumph and achievement.
 Image: Cartoon illustration of a globe with seven continents.
-🎤: "Correct! Another point for the cat! Last question How many continents are there on Earth?"
+🎤: Correct! Another point for the cat! Last question How many continents are there on Earth?
 Audio: A upbeat funny music.
-🐶: "Seven!"
+🐶: Seven!
 Audio: an uplifting fanfare, reminiscent of victory, triumph and achievement.
-🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
+🎤: Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!
 
