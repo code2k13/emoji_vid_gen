@@ -14,6 +14,12 @@ wget https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
 ```
 
 ```bash
+git clone https://github.com/code2k13/emoji_vid_gen
+cd emoji_vid_gen
+```
+
+
+```bash
 pip install -r requirements.txt
 ```
 
