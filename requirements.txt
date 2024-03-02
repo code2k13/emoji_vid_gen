@@ -1,0 +1,10 @@
+diffusers
+moviepy
+transformers
+soundfile
+accelerate
+opencv-python
+pydub
+scipy
+pyttsx3
+python-dotenv

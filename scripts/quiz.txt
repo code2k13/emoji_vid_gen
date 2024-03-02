@@ -1,0 +1,28 @@
+Image:  A single trophy kept on table. comic book style.
+Audio: Upbeat introduction music for cartoon show.
+Title: Emoji Quiz Showdown
+🎤: "Welcome to the Emoji Quiz Showdown! Are you ready to test your knowledge?"
+🐱: "Meow! I'm ready!"
+🐶: "Woof! Let's do this!"
+Image: Cartoon illustration of the Eiffel Tower.
+🎤: "First question What is the capital of France?"
+Audio: suspenseful music playing.
+🐱: "Paris!"
+Audio: people applauding sound
+Image: Cartoon illustration of Mount Everest.
+🎤: "Correct! One point for the cat! Next question  What is the tallest mountain in the world?"
+Audio: suspenseful music playing.
+🐶: "Mount Everest!"
+Audio: people applauding sound
+Image: Cartoon illustration of a water molecule.
+🎤: "Right again! One point for the dog! Next question  What is the chemical symbol for water?"
+Audio: suspenseful music playing.
+🐱: "H2O!"
+Audio: people applauding sound
+Image: Cartoon illustration of a globe with seven continents.
+🎤: "Correct! Another point for the cat! Last question How many continents are there on Earth?"
+Audio: suspenseful music playing.
+🐶: "Seven!"
+Audio: people applauding sound
+🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
+
