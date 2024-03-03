@@ -38,7 +38,7 @@ class ScriptParser:
         video_clips = []
         actors = []
 
-        fps = 25
+        fps = 30
         current_image = None
         file_path = script_path
 
@@ -77,8 +77,9 @@ class ScriptParser:
                         actors.append(emoji_text)
                     text = line.split(":")[1].strip()
                     audio_file = voices_dict[text]
-                    audio_file = apply_cartoon_sound_effect(
-                        audio_file, actors.index(emoji_text))
+                    #TODO: Fix this. Causing audio corruption due to bitrate mismatch.
+                    #audio_file = apply_cartoon_sound_effect(
+                    #    audio_file, actors.index(emoji_text))
                     audio_clip = AudioFileClip(audio_file)
                     text_image_path = txt2dialog.create_dialog(
                         current_image, emoji_text, type="emoji")
@@ -88,6 +89,6 @@ class ScriptParser:
                     video_clips.append(emoji_clip)
 
         final_clip = concatenate_videoclips(video_clips)
-        final_clip.write_videofile(output_file, fps=30,threads=1)
+        final_clip.write_videofile(output_file, fps=fps,threads=1)
         print(f"Video generated successfully: {output_file}")
         return output_file
