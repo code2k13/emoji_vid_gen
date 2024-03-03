@@ -10,12 +10,13 @@ This Python-based tool efficiently creates videos from text scripts stored in te
 ```bash
 sudo apt update
 sudo apt install espeak ffmpeg
-wget https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
+
 ```
 
 ```bash
 git clone https://github.com/code2k13/emoji_vid_gen
 cd emoji_vid_gen
+wget https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
 ```
 
 
@@ -93,10 +94,10 @@ USE_CUDA=true
 Ensure that asset files are present in .cache folder. Create the script in this manner
 
 ```bash
-Image: existing_background_hd.png
+Image: .cache/existing_background_hd.png
 Audio: Funny opening music jingle.
 Title: EmojiVidGen
-🐼: existing_speech.wav
+🐼: .cache/existing_speech.wav
 ```
 
 ## Change default width and height of image
