@@ -72,6 +72,14 @@ Audio: people applauding sound
 🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
 ```
 
+## Use high quality text to image (SDXL-Turbo)(Recommended)
+
+Create .env file if not present and add set following variable. 
+Warning: You will need at least 16 GB RAM.
+```bash
+USE_SD_TURBO_XL=true
+```
+
 ## Using high quality TTS (Bark):
 
 Create .env file if not present and add set following variable. 
