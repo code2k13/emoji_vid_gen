@@ -1,6 +1,5 @@
 from moviepy.editor import *
-from audio_filters import apply_cartoon_sound_effect
-
+#from audio_filters import apply_cartoon_sound_effect
 from plugins.tts.espeak_tts import ESpeakTTS
 from plugins.tts.bark_tts import BarkTTS
 from plugins.txt2img.sdturbo_txt2img import StableDiffusionTxt2Img
@@ -12,7 +11,6 @@ class ScriptParser:
 
     @staticmethod
     def parse_script(script_path: str, output_file: str) -> str:
-        
         if os.getenv("VIDEO_WIDTH") is not None:
             width = int(os.getenv("VIDEO_WIDTH"))
         else:
