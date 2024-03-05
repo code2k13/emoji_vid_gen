@@ -4,6 +4,7 @@ from utils import create_temp_file, is_valid_filename
 from typing import Literal
 import random
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 
 class DefaultTxt2Dialog(BaseText2Dialog):
@@ -23,8 +24,11 @@ class DefaultTxt2Dialog(BaseText2Dialog):
             font = ImageFont.truetype("NotoColorEmoji.ttf", size=109)
             y = self.height - 200
         else:
-            font = ImageFont.truetype(
-                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size=60)
+            font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+            if os.path.exists(font_path) and os.access(font_path, os.R_OK):
+                font = ImageFont.truetype(font_path, size=60)
+            else:
+                font = ImageFont.load_default()
         text_width = draw.textlength(text, font=font)
         x = (self.width - text_width)//2
 

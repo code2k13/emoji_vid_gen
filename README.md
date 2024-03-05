@@ -1,6 +1,6 @@
-# emoji_vid_gen
+# Emoji Video Generator
 
-This Python-based tool efficiently creates videos from text scripts stored in text files by leveraging diverse AI models. Designed to operate locally, it performs effectively on CPUs. This project is experimental in nature, crafted primarily for educational purposes
+The objective of this project was to develop a straightforward system capable of converting a basic script stored in a text file into a video. The aim was to ensure simplicity to the extent that even individuals with a bit of creativity and typing skills could produce a movie effortlessly. This tool is designed to operate smoothly on a computer with 8 GB of memory, offering reasonable processing speeds even without GPUs. While initially intended for entertainment with GenAI, I believe that, in capable hands, it holds the potential to generate pretty cool content. This project is experimental in nature, crafted primarily for educational purposes
 
 > This software is intended solely for educational purposes. It is used at your own discretion and risk. Please be aware that the AI models utilized in this code may have restrictions against commercial usage.
 
