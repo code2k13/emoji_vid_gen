@@ -33,8 +33,8 @@ class DefaultTxt2Dialog(BaseText2Dialog):
         x = (self.width - text_width)//2
 
         if type == "emoji":
-            center = (x+109-40, y+45)
-            radius = 130
+            center = (x+109-40, y+60)
+            radius = 80
             color = (0, 0, 0, 128)
             draw.ellipse((center[0] - radius, center[1] - radius,
                          center[0] + radius, center[1] + radius), fill=color)
