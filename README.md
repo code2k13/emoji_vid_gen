@@ -28,6 +28,8 @@ pip install -r requirements.txt
 
 ## Sample script
 
+> Note: A script should always start with a **Image:** directive
+
 ```bash
 Image: Cartoon illustration showing a beautiful landscape with mountains and a road.
 Audio: Tranquil calm music occasional chirping of birds.
@@ -73,6 +75,20 @@ Audio: suspenseful music playing.
 Audio: people applauding sound
 🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
 ```
+## Seeding character images
+Sometimes you may not want to use emojis as characters in your video. In such cases you can use *seed_character.py* tool as follows
+
+```bash
+python3 seed_character.py add 🐿️  --filename squirrel.png 
+```
+
+The above commands instructs the video generation script to use *squirrel.png* every time the 🐿️ emojis is encountered. It is also possible to remove
+the character seeding by using:
+
+```bash
+python3 seed_character.py remove 🐿️
+```
+When seeding characters ensure that you use square images, background is removed from images and they are stored as PNG.
 
 ## Use high quality text to image (SDXL-Turbo)(Recommended)
 

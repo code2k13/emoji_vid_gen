@@ -20,6 +20,14 @@ class Cache:
         text_bytes = text.encode('utf-8')
         file_path_bytes = file_path.encode('utf-8')
         self._db.put(text_bytes, file_path_bytes)
+    
+    def delete_entry(self, text):
+        if self._db.get(text.encode('utf-8')):
+            self._db.delete(text.encode('utf-8'))
+            print(f"Deleted cache entry for text: {text}")
+        else:
+            print(f"Cache entry for text '{text}' does not exist")
+
 
     def get_file_path(self, text):
         text_bytes = text.encode('utf-8')
