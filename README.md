@@ -76,7 +76,7 @@ Audio: people applauding sound
 🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
 ```
 
-### The Narrator
+## The Narrator
 The emoji '🎙️' is reserved as narrator. Using it at start of line will cause the system to only generated sound and not output any image on background.
 
 ## Seeding character images
