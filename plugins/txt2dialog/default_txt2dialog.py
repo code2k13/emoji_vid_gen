@@ -15,6 +15,10 @@ class DefaultTxt2Dialog(BaseText2Dialog):
 
     def create_dialog(self, image_path, text: str, type: Literal["text", "emoji"] = "text") -> str:
 
+        # 🎙️ is reserved for narrator. Dont draw emoji
+        if type=="emoji" and text == "🎙️":
+            return image_path
+
         text = text.strip()
         if is_valid_filename(text) and type == "text":
             return text

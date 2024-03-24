@@ -75,6 +75,10 @@ Audio: suspenseful music playing.
 Audio: people applauding sound
 🎤: "Correct! It's a tie! You both did great! Thanks for playing the Emoji Quiz Showdown!"
 ```
+
+### The Narrator
+The emoji '🎙️' is reserved as narrator. Using it at start of line will cause the system to only generated sound and not output any image on background.
+
 ## Seeding character images
 Sometimes you may not want to use emojis as characters in your video. In such cases you can use *seed_character.py* tool as follows
 

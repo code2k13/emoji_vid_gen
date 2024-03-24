@@ -12,7 +12,7 @@ class BarkTTS(BaseTTS):
     USE_CUDA = os.getenv('USE_CUDA')
     _cache = Cache()
 
-    def __generate_audio(self, model, processor, text, voice="v2/hi_speaker_9"):
+    def __generate_audio(self, model, processor, text, voice="v2/en_speaker_6"):
         random_filename = create_temp_file(".wav")
         inputs = processor(text.strip(), voice_preset=voice, return_tensors="pt")
         if self.USE_CUDA == "true":
