@@ -12,12 +12,12 @@ class BarkTTS(BaseTTS):
     USE_CUDA = os.getenv('USE_CUDA')
     _cache = Cache()
 
-    def __generate_audio(self, model, processor, text, voice="v2/en_speaker_6"):
+    def __generate_audio(self, model, processor, text, voice="v2/hi_speaker_9"):
         random_filename = create_temp_file(".wav")
-        inputs = processor(text.strip(), voice_preset=voice)
+        inputs = processor(text.strip(), voice_preset=voice, return_tensors="pt")
         if self.USE_CUDA == "true":
             inputs.to("cuda")
-        audio_array = model.generate(**inputs)
+        audio_array = model.generate(**inputs,do_sample=True)
         audio_array = audio_array.cpu().numpy().squeeze()
         sf.write(random_filename, audio_array,
                  samplerate=22050, subtype='PCM_24')
@@ -25,7 +25,7 @@ class BarkTTS(BaseTTS):
         return random_filename
 
     def generate_voices(self, script_file):
-        processor = AutoProcessor.from_pretrained("suno/bark")
+        processor = AutoProcessor.from_pretrained("suno/bark-small")
         audio_model = BarkModel.from_pretrained("suno/bark-small")
         if self.USE_CUDA == "true":
             audio_model.to("cuda")

@@ -9,4 +9,3 @@ scipy
 pyttsx3
 python-dotenv
 plyvel
-gtts
