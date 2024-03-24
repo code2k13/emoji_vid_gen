@@ -1,6 +1,7 @@
 Image: A dense jungle with towering trees and tangled vines. Cartoon illustration.
 Title: Jungle Adventure
 Audio: Mysterious jungle sounds, including chirping birds and rustling leaves.
+🎙️: Once upon a time there lived two friends in a forest, named Jake and Sarah.
 🐿️: Hey, Jake, I think we're lost.
 🐕: Yeah, Sarah, this jungle is way bigger than we thought!
 Image: A path through jungle, surrounded by dense foliage. Cartoon illustration.
@@ -26,4 +27,4 @@ Image: A village with huts and farms. Cartoon illustration.
 Audio: Happy and upbeat music as they celebrate their successful journey.
 🐿️: We'll never forget this jungle adventure, Sarah.
 🐕: Definitely not, Jake. We make a great team!
-🎤: And so, our two friends emerged from the jungle, stronger and closer than ever before. Thanks for joining us on this thrilling journey!
+🎙️: And so, our two friends emerged from the jungle, stronger and closer than ever before. Thanks for joining us on this thrilling journey!
