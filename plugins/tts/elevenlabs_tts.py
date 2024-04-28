@@ -31,6 +31,7 @@ class ElevenLabsTTS(BaseTTS):
             random_filename = create_temp_file(".mp3")
             audio = self.client.generate(text=text, voice=self.voice, model=self.model)
             save(audio,random_filename)
+            self._cache.store_text(text, random_filename)
             return random_filename
         except Exception as e:
             self.console.print(f"[bold red]Error:[/bold red] {e}")
