@@ -1,5 +1,5 @@
 import argparse
-from cache import Cache
+from utils.cache import Cache
 import unicodedata
 import shutil
 import os

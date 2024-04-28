@@ -1,8 +1,8 @@
 # Emoji Video Generator
 
-![sample script converted to video](emoji_vid_generator.gif)
+![sample script converted to video](docs/emoji_vid_generator.gif)
 
-The objective of this project was to develop a straightforward system capable of converting a basic script stored in a text file into a video. The aim was to ensure simplicity to the extent that even individuals with a bit of creativity and typing skills could produce a movie effortlessly. This tool is designed to operate smoothly on a computer with 8 GB of memory, offering reasonable processing speeds even without GPUs. While initially intended for entertainment with GenAI, I believe that, in capable hands, it holds the potential to generate pretty cool content. This project is experimental in nature, crafted primarily for educational purposes
+The objective of `EmojiVidGen` was to develop a straightforward system capable of converting a basic script stored in a text file into a video. The aim was to ensure simplicity to the extent that even individuals with a bit of creativity and typing skills could produce a movie effortlessly. This tool is designed to operate smoothly on a computer with 8 GB of memory, offering reasonable processing speeds even without GPUs. While initially intended for entertainment with GenAI, I believe that, in capable hands, it holds the potential to generate pretty cool content. This project is experimental in nature, crafted primarily for educational purposes
 
 > This software is intended solely for educational purposes. It is used at your own discretion and risk. Please be aware that the AI models utilized in this code may have restrictions against commercial usage.
 
@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ## Sample script
 
-> Note: A script should always start with a **Image:** directive
+> Note: A script should always start with a `Image:` directive
 
 ```bash
 Image: Cartoon illustration showing a beautiful landscape with mountains and a road.
@@ -77,51 +77,56 @@ Audio: people applauding sound
 ```
 
 ## The Narrator
-The emoji '🎙️' is reserved as narrator. Using it at start of line will cause the system to only generated sound and not output any image on background.
+The emoji `🎙️` is reserved as narrator. Using it at start of line will cause the system to only generated sound and not output any image on background.
 
 ## Seeding character images
-Sometimes you may not want to use emojis as characters in your video. In such cases you can use *seed_character.py* tool as follows
+Sometimes you may not want to use emojis as characters in your video. In such cases you can use `seed_character.py` tool as follows
 
 ```bash
 python3 seed_character.py add 🐿️  --filename squirrel.png 
 ```
 
-The above commands instructs the video generation script to use *squirrel.png* every time the 🐿️ emojis is encountered. It is also possible to remove
-the character seeding by using:
+The above commands instructs the video generation script to use `squirrel.png` every time the 🐿️ emojis is encountered. It is also possible to remove the character seeding by using:
 
 ```bash
 python3 seed_character.py remove 🐿️
 ```
 When seeding characters ensure that you use square images, background is removed from images and they are stored as PNG.
 
-## Use high quality text to image (SDXL-Turbo)(Recommended)
+## Using presets
 
-Create .env file if not present and add set following variable. 
-Warning: You will need at least 16 GB RAM.
+If you've followed the earlier instructions for video generation, you might have noticed that the default setup uses `espeak` as the text-to-speech engine, resulting in a robotic-sounding output. EmojiVidGen is built with an internal structure comprising plugins, each capable of modifying how a task is executed or which model is used.
+
+For instance, you can designate a specific plugin for each type of generation task—be it text-to-image, text-to-audio, or text-to-speech. Because each plugin operates with its unique model and method, configuring these settings individually can be overwhelming. To simplify this process, I've introduced the concept of presets. You can apply a preset by supplying the `--preset` option to the `generate_video.py` file.
+
+For example the below preset uses a profile called `local_medium`.
 ```bash
-USE_SD_TURBO_XL=true
+python generate_video.py scripts/hello.txt hello.mp4 --preset local_medium
 ```
 
-## Using high quality TTS (Bark):
-
-Create .env file if not present and add set following variable. 
-Warning: This is super slow on CPU.
+All profiles are stored in `./profiles folder`. To create a new profile (say `custom_profile`), just create a new `custom_profile.yaml` file in `./profiles' folder and start using it like this
 
 ```bash
-TTS_HIGH_QUALITY=true
+python generate_video.py scripts/hello.txt hello.mp4 --preset custom_profile
 ```
 
-## Using GPU
+## Available Presets
 
-Create .env file if not present and add set following variable
+| preset_name | settings |
+|-----------------|-----------------|
+| local_basic   | Uses Huggingface's Stable Diffusion pipeline with `stabilityai/sd-turbo` model for text to image. Uses `espeak` for text to speech and Huggingface's AudioLDM pipeline for text to audio.   |
+| local_basic_gpu    | Same as local_basic, but with cuda support enabled.   |
+| local_medium    | Similar to local_basic but uses `brave` as text to speech engine and `stabilityai/sdxl-turbo` model for text to image   |
+| local_medium    | Same as local_medium, but with cuda support is enabled.   |
 
-```bash
-USE_CUDA=true
-```
+
+## Creating custom presets
+
+WIP
 
 ## Using pre-created assets
 
-Ensure that asset files are present in .cache folder. Create the script in this manner
+Ensure that asset files are present in `.cache` folder. Create the script in this manner
 
 ```bash
 Image: .cache/existing_background_hd.png
@@ -132,11 +137,12 @@ Title: EmojiVidGen
 
 ## Change default width and height of image
 
-The default resolution is 1280x720. To change it set the following environment  variables in .env file:
+Copy a suitable profile and modify following lines:
 
-```bash
-VIDEO_WIDTH=1152 
-VIDEO_HEIGHT=896
+```yaml
+global:
+  width: 1152
+  height: 896
 ```
 
 Note: This setting does affect the output of stable diffusion. Not all resolutions work that well. For  more information checkout this
@@ -145,7 +151,7 @@ Note: This setting does affect the output of stable diffusion. Not all resolutio
 
 ## Known issues
 
-You will see this error message when using default TTS engine. 
+You will see this error message when using `espeak` text to speech provider. 
 
 ```bash
 Traceback (most recent call last):

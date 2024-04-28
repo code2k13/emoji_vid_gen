@@ -9,3 +9,4 @@ scipy
 pyttsx3
 python-dotenv
 plyvel
+rich

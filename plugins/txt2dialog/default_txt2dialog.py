@@ -1,13 +1,12 @@
 
 from .base_txt2dialog import BaseText2Dialog
-from utils import create_temp_file, is_valid_filename
+from utils.helpers import create_temp_file, is_valid_filename
 from typing import Literal
 import random
 from PIL import Image, ImageDraw, ImageFont
 import os
-from cache import Cache
+from utils.cache import Cache
 import unicodedata
-
 
 class DefaultTxt2Dialog(BaseText2Dialog):
     _cache = Cache()

@@ -1,8 +1,10 @@
 import pyttsx3
-from utils import create_temp_file, is_valid_filename 
+from rich import console
+from utils.helpers import create_temp_file, is_valid_filename 
 import time
 from .base_tts import BaseTTS
-from cache import Cache 
+from utils.cache import Cache
+from rich.console import Console 
 
 class ESpeakTTS(BaseTTS):
 
@@ -18,6 +20,7 @@ class ESpeakTTS(BaseTTS):
         return random_filename
 
     def generate_voices(self, script_file: str):
+        console = Console()
         emoji_voice_dict = {}
         with open(script_file, 'r') as f:
             for line in f:
@@ -29,7 +32,7 @@ class ESpeakTTS(BaseTTS):
                         existing_file = self._cache.get_file_path(voice_text)
                         if existing_file:
                             emoji_voice_dict[voice_text] = existing_file
-                            print(f"Loading asset for '{voice_text}' from cache.")
+                            console.print(f"[green]Loading asset for '{voice_text}' from cache.")
                             continue
                         voice_file = self.__generate_audio(voice_text)
                         # very bad hack :-(

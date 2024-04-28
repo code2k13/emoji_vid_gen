@@ -1,0 +1,19 @@
+global:
+  width: 1152
+  height: 896
+  use_cuda: "true"
+
+text_to_speech:
+  provider: bark
+  model: suno/bark-small
+
+text_to_image:
+  provider: hf_text2image
+  model: stabilityai/sdxl-turbo
+
+text_to_dialog:
+  provider: default_txt2dialog
+
+text_to_audio:
+  provider: hf_audioldm
+  model: cvssp/audioldm-m-full

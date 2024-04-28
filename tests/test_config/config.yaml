@@ -1,0 +1,31 @@
+global:
+  width: 1152
+  height: 896
+  use_cuda: "false"
+
+#supported values are "bark","espeak","openai"
+text_to_speech:
+  provider: bark
+  model: gpt-neo-tts-small
+  speed: 1.0
+  pitch: 0.0
+  volume: 1.0
+  format: mp3
+
+#supported values are hf_text2image and openai
+#only openai uses other attributes
+text_to_image:
+  provider: openai
+  model: dalle-12-12
+  temperature: 0.9
+  top_p: 0.9
+  max_tokens: 512
+
+#supported values are default_txt2dialog
+text_to_dialog:
+  provider: default_txt2dialog
+
+#supported values are hf_audioldm
+text_to_audio:
+  provider: hf_audioldm
+  model: cvssp/audioldm-m-full
