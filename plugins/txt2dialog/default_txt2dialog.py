@@ -58,8 +58,9 @@ class DefaultTxt2Dialog(BaseText2Dialog):
                           font=font, embedded_color=True)
         else:
             font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+            title_font_size = int(self.width * 60/1024)
             if os.path.exists(font_path) and os.access(font_path, os.R_OK):
-                font = ImageFont.truetype(font_path, size=60)
+                font = ImageFont.truetype(font_path, size=title_font_size)
             else:
                 font = ImageFont.load_default()
             y = (self.height) // 2

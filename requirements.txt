@@ -10,3 +10,4 @@ pyttsx3
 python-dotenv
 plyvel
 rich
+elevenlabs

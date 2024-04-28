@@ -112,12 +112,13 @@ python generate_video.py scripts/hello.txt hello.mp4 --preset custom_profile
 
 ## Available Presets
 
-| preset_name | settings |
+| Preset Name | Description |
 |-----------------|-----------------|
 | local_basic   | Uses Huggingface's Stable Diffusion pipeline with `stabilityai/sd-turbo` model for text to image. Uses `espeak` for text to speech and Huggingface's AudioLDM pipeline for text to audio.   |
 | local_basic_gpu    | Same as local_basic, but with cuda support enabled.   |
 | local_medium    | Similar to local_basic but uses `brave` as text to speech engine and `stabilityai/sdxl-turbo` model for text to image   |
 | local_medium    | Same as local_medium, but with cuda support is enabled.   |
+| eleven_medium    | Same as local_medium, but uses `ElevenLabs` text to speech API support is enabled. Needs internet and `ELEVEN_API_KEY` variable to be defined in `.env` file. Needs internet and ElevenLabs account.   |
 
 
 ## Creating custom presets
@@ -161,3 +162,12 @@ ReferenceError: weakly-referenced object no longer exists
 ```
 
 Ignore this error for now as it does not affect the output.
+
+
+If you receive the below error, delete the `.cache` directory
+
+```bash
+  File "plyvel/_plyvel.pyx", line 247, in plyvel._plyvel.DB.__init__
+  File "plyvel/_plyvel.pyx", line 88, in plyvel._plyvel.raise_for_status
+plyvel._plyvel.IOError: b'IO error: lock .cache/asset/LOCK: Resource temporarily unavailable'
+```

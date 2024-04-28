@@ -1,6 +1,6 @@
 global:
-  width: 1152
-  height: 896
+  width: 512
+  height: 512
   use_cuda: "false"
 
 text_to_speech:

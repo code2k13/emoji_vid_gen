@@ -4,6 +4,7 @@ from plugins.txt2dialog.default_txt2dialog import DefaultTxt2Dialog
 from plugins.tts.bark_tts import BarkTTS
 from plugins.tts.espeak_tts import ESpeakTTS
 from plugins.txt2audio.audio_ldm_txt2audio import AudioLDMTxt2Audio
+from plugins.tts.elvenlabs_tts import ElevenLabsTTS
 
 class ConfigManager:
     def __init__(self, file_path):
@@ -32,6 +33,8 @@ class ConfigManager:
             return BarkTTS(self.config)
         elif provider == 'espeak':
             return ESpeakTTS(self.config)
+        elif provider == 'elevenlabs':
+            return ElevenLabsTTS(self.config)
         elif provider == 'openai':
             raise NotImplementedError()
         else:

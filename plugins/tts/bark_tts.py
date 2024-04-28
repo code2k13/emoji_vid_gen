@@ -29,6 +29,8 @@ class BarkTTS(BaseTTS):
                 self.model = tts_config['model']
             if 'voice' not in tts_config:
                 self.voice = 'v2/en_speaker_6'
+            else:
+                self.voice = tts_config["voice"]
 
     def __generate_audio(self, model, processor, text):
         random_filename = create_temp_file(".wav")

@@ -1,12 +1,11 @@
 global:
   width: 512
   height: 512
-  use_cuda: "true"
+  use_cuda: "false"
 
 text_to_speech:
-  provider: bark
-  model: suno/bark-small
-  voice: v2/en_speaker_9
+  provider: elevenlabs
+  voice: Glinda
 
 text_to_image:
   provider: hf_text2image
