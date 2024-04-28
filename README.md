@@ -2,7 +2,17 @@
 
 ![sample script converted to video](docs/emoji_vid_generator.gif)
 
-The objective of `EmojiVidGen` is to develop a straightforward system capable of converting a basic script stored in a text file into a video. The aim is to ensure simplicity to the extent that even individuals with a bit of creativity and typing skills could produce a movie effortlessly. This tool is designed to operate smoothly on a computer with 8 GB of memory, offering reasonable processing speeds even without GPUs. While initially intended for entertainment with GenAI, I believe that, in capable hands, it holds the potential to generate pretty cool content. This project is experimental in nature, crafted primarily for educational purposes
+EmojiVidGen is a versatile script-to-video converter aimed at simplifying the creation of movies from basic text files. The tool prioritizes ease of use, making it accessible to individuals with varying levels of creativity and typing skills.
+
+Key Features
+- Converts text files into visually appealing videos
+- Automatically generates narration, images, and audio effects
+- Designed to run smoothly on computers with 8 GB of memory, offering reasonable processing speeds even without GPUs
+- Utilizes various Generative AI models for its tasks
+- Built on a powerful plugin system, allowing for easy extensibility
+
+ 
+While initially intended for entertainment with GenAI, `EmojiVidGen` holds significant potential for producing engaging and cool content, especially in capable hands. This project is experimental and primarily crafted for educational purposes, exploring the possibilities of AI-powered video creation.
 
 > This software is intended solely for educational purposes. It is used at your own discretion and risk. Please be aware that the AI models utilized in this code may have restrictions against commercial usage.
 
@@ -91,7 +101,7 @@ The above commands instructs the video generation script to use `squirrel.png` e
 ```bash
 python3 seed_character.py remove 🐿️
 ```
-When seeding characters ensure that you use square images, background is removed from images and they are stored as PNG.
+When seeding characters ensure that you use square images, replace background with transparency and ensure images are stored as PNG.
 
 ## Using presets
 
