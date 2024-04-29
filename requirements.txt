@@ -11,3 +11,4 @@ python-dotenv
 plyvel
 rich
 elevenlabs
+git+https://github.com/huggingface/parler-tts.git
