@@ -5,6 +5,7 @@ from plugins.tts.bark_tts import BarkTTS
 from plugins.tts.espeak_tts import ESpeakTTS
 from plugins.txt2audio.audio_ldm_txt2audio import AudioLDMTxt2Audio
 from plugins.tts.elevenlabs_tts import ElevenLabsTTS
+from plugins.tts.parler_tts import ParlerTTS
 
 class ConfigManager:
     def __init__(self, file_path):
@@ -37,6 +38,8 @@ class ConfigManager:
             return ElevenLabsTTS(self.config)
         elif provider == 'openai':
             raise NotImplementedError()
+        elif provider == 'parler':
+            return ParlerTTS(self.config)
         else:
             raise ValueError(f"Unsupported provider '{provider}' for text_to_speech.")
 

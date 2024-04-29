@@ -51,7 +51,7 @@ Title: EmojiVidGen
 ## How to run
 
 ```bash
-python generate_video.py scripts/hello.txt hello.mp4
+python generate_video.py stories/hello.txt hello.mp4
 ```
 
 ## A full featured example
@@ -111,13 +111,13 @@ For instance, you can designate a specific plugin for each type of generation ta
 
 For example the below preset uses a preset called `local_medium`.
 ```bash
-python generate_video.py scripts/hello.txt hello.mp4 --preset local_medium
+python generate_video.py stories/hello.txt hello.mp4 --preset local_medium
 ```
 
 All presets are stored in `./presets folder`. To create a new preset (say `custom_preset`), just create a new `custom_preset.yaml` file in `./presets' folder and start using it like this
 
 ```bash
-python generate_video.py scripts/hello.txt hello.mp4 --preset custom_preset
+python generate_video.py stories/hello.txt hello.mp4 --preset custom_preset
 ```
 
 ## Available Presets
@@ -129,6 +129,7 @@ python generate_video.py scripts/hello.txt hello.mp4 --preset custom_preset
 | local_medium    | Similar to local_basic but uses `brave` as text to speech engine and `stabilityai/sdxl-turbo` model for text to image   |
 | local_medium    | Same as local_medium, but with cuda support is enabled.   |
 | eleven_medium    | Same as local_medium, but uses `ElevenLabs` text to speech API support is enabled. Needs internet and `ELEVEN_API_KEY` variable to be defined in `.env` file. Needs internet and ElevenLabs account.   |
+| parler_medium    | Same as local_medium, but uses `parler` text to speech API support is enabled.|
 
 
 ## Creating custom presets
@@ -180,4 +181,28 @@ If you receive the below error, delete the `.cache` directory
   File "plyvel/_plyvel.pyx", line 247, in plyvel._plyvel.DB.__init__
   File "plyvel/_plyvel.pyx", line 88, in plyvel._plyvel.raise_for_status
 plyvel._plyvel.IOError: b'IO error: lock .cache/asset/LOCK: Resource temporarily unavailable'
+```
+
+## Citation
+
+```
+@misc{lacombe-etal-2024-parler-tts,
+  author = {Yoach Lacombe and Vaibhav Srivastav and Sanchit Gandhi},
+  title = {Parler-TTS},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/huggingface/parler-tts}}
+}
+```
+
+```
+@misc{lyth2024natural,
+      title={Natural language guidance of high-fidelity text-to-speech with synthetic annotations},
+      author={Dan Lyth and Simon King},
+      year={2024},
+      eprint={2402.01912},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD}
+}
 ```
