@@ -109,15 +109,15 @@ If you've followed the earlier instructions for video generation, you might have
 
 For instance, you can designate a specific plugin for each type of generation task—be it text-to-image, text-to-audio, or text-to-speech. Because each plugin operates with its unique model and method, configuring these settings individually can be overwhelming. To simplify this process, I've introduced the concept of presets. You can apply a preset by supplying the `--preset` option to the `generate_video.py` file.
 
-For example the below preset uses a profile called `local_medium`.
+For example the below preset uses a preset called `local_medium`.
 ```bash
 python generate_video.py scripts/hello.txt hello.mp4 --preset local_medium
 ```
 
-All profiles are stored in `./profiles folder`. To create a new profile (say `custom_profile`), just create a new `custom_profile.yaml` file in `./profiles' folder and start using it like this
+All presets are stored in `./presets folder`. To create a new preset (say `custom_preset`), just create a new `custom_preset.yaml` file in `./presets' folder and start using it like this
 
 ```bash
-python generate_video.py scripts/hello.txt hello.mp4 --preset custom_profile
+python generate_video.py scripts/hello.txt hello.mp4 --preset custom_preset
 ```
 
 ## Available Presets
@@ -148,7 +148,7 @@ Title: EmojiVidGen
 
 ## Change default width and height of image
 
-Copy a suitable profile and modify following lines:
+Copy a suitable preset file and modify following lines:
 
 ```yaml
 global:
