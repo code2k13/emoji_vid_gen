@@ -124,6 +124,8 @@ python generate_video.py stories/hello.txt hello.mp4 --preset custom_preset
 
 | Preset Name | Description |
 |-----------------|-----------------|
+| openai_basic   | Uses OpenAI for text to speech (standard) and image generation (DALL-E 2 @ 512x512). Needs `OPENAI_API_KEY` environment variable to be populated  |
+| openai_medium   | Similar to openai_basic but uses (DALL-E 3 @ 1024x1024). Needs `OPENAI_API_KEY` environment variable to be populated  |
 | local_basic   | Uses Huggingface's Stable Diffusion pipeline with `stabilityai/sd-turbo` model for text to image. Uses `espeak` for text to speech and Huggingface's AudioLDM pipeline for text to audio.   |
 | local_basic_gpu    | Same as local_basic, but with cuda support enabled.   |
 | local_medium    | Similar to local_basic but uses `brave` as text to speech engine and `stabilityai/sdxl-turbo` model for text to image   |
@@ -135,6 +137,13 @@ python generate_video.py stories/hello.txt hello.mp4 --preset custom_preset
 ## Creating custom presets
 
 WIP
+
+
+## About Cache
+
+EmojiVidGen utilizes a cache mechanism to retain assets produced during video creation, each associated with the specific 'prompt' used. This feature proves highly beneficial, especially when iteratively refining videos, eliminating the need to regenerate assets repetitively. However, please be aware that the `.cache` directory is not automatically cleared. It's advisable to clear it upon completing a video project and beginning another.
+
+> Tip: To force re-creation of cached assets make minorinor alterations to the 'prompt' such as adding a space or punctuation
 
 ## Using pre-created assets
 

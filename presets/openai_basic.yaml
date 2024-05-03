@@ -1,0 +1,20 @@
+global:
+  width: 512
+  height: 512 
+  use_cuda: "false"
+
+text_to_speech:
+  provider: openai
+  voice: Nova
+
+text_to_image:
+  provider: openai
+  model: dall-e-2
+  quality: standard
+
+text_to_dialog:
+  provider: default_txt2dialog
+
+text_to_audio:
+  provider: hf_audioldm
+  model: cvssp/audioldm-m-full

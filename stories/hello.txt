@@ -1,4 +1,4 @@
 Image: Cartoon illustration showing a beautiful landscape with mountains and a road.
 Audio: Tranquil calm music occasional chirping of birds.
 Title: EmojiVidGen
-🐼: Kaelen, braves treacherous paths and faces ancient guardians to uncover its secrets.
+🐼: Emoji vid gen is a tool to create videos from text files using AI.
