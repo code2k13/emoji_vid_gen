@@ -2,7 +2,7 @@
 
 ![sample script converted to video](docs/emoji_vid_generator.gif)
 
-EmojiVidGen is a versatile script-to-video converter aimed at simplifying the creation of movies from basic text files. The tool prioritizes ease of use, making it accessible to individuals with varying levels of creativity and typing skills.
+EmojiVidGen is a fun tool that creates videos from text files. It takes input in the form of plain text files containing a script (similar to a story or dialogue). It then transforms this script into a stunning video. EmojiVidGen is based on a plugin system, which allows for experimenting with different models and languages. All you need is some imagination and typing skills !
 
 Key Features
 - Converts text files into visually appealing videos
@@ -10,6 +10,7 @@ Key Features
 - Designed to run smoothly on computers with 8 GB of memory, offering reasonable processing speeds even without GPUs
 - Utilizes various Generative AI models for its tasks
 - Built on a powerful plugin system, allowing for easy extensibility
+- Switch between different models and spoken languages.
 
  
 While initially intended for entertainment with GenAI, `EmojiVidGen` holds significant potential for producing engaging and cool content, especially in capable hands. This project is experimental and primarily crafted for educational purposes, exploring the possibilities of AI-powered video creation.
