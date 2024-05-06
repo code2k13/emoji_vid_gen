@@ -10,7 +10,7 @@ from plugins.tts.elevenlabs_tts import ElevenLabsTTS
 from plugins.tts.parler_tts import ParlerTTS
  
 
-class ConfigManager:
+class PluginManager:
     def __init__(self, file_path):
         self.config = self.load_config(file_path)
 

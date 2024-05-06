@@ -1,8 +1,38 @@
 from abc import ABC
 from rich.console import Console
+import os
 
 
 class PluginBase(ABC):
+
+    def __load_characters(self, config):
+        console = Console()
+        character_data = config.get('characters', [])
+
+        if character_data:
+            console.print("[grey] loading character data")
+
+        self.characters = {}
+        for character in character_data:
+            name = character.get('name', '')
+            if not name:
+                console.print(
+                    "\n[bold red]Error: `name` of character is required.")
+                raise ValueError("name of character is required.")
+            else:
+                self.characters[name] = {}
+
+            voice = character.get('voice', '')
+            if voice:
+                self.characters[name]["voice"] = voice
+
+            image = character.get('image', '')
+            if image:
+                if os.path.exists(image):
+                    self.characters[name]["image"] = image
+                else:
+                    raise FileNotFoundError(image)
+
     def __init__(self, config):
         self.config = config
         self.validate_config()
@@ -15,6 +45,16 @@ class PluginBase(ABC):
             self.use_cuda = True
         else:
             self.use_cuda = False
+
+    def get_character_data(self, line):
+        character_name = line.split(":")[0].strip()
+        character = self.characters.get(character_name, "")
+        if character:
+            voice = character.get("voice", "")
+            image = character.get("image", "")
+            return voice, image
+        else:
+            return "",""
 
     def validate_config(self):
         console = Console()
@@ -41,3 +81,5 @@ class PluginBase(ABC):
                 "\n[bold red]Error: use_cuda must be 'true' or 'false' (case-sensitive).")
             raise ValueError(
                 "use_cuda must be 'true' or 'false' (case-sensitive).")
+
+        self.__load_characters(global_config)

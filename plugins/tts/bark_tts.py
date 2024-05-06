@@ -32,9 +32,9 @@ class BarkTTS(BaseTTS):
             else:
                 self.voice = tts_config["voice"]
 
-    def __generate_audio(self, model, processor, text):
+    def __generate_audio(self, model, processor, text, voice):
         random_filename = create_temp_file(".wav")
-        inputs = processor(text.strip(), voice_preset=self.voice,
+        inputs = processor(text.strip(), voice_preset=voice,
                            return_tensors="pt")
         if self.use_cuda:
             inputs.to("cuda")
@@ -55,6 +55,7 @@ class BarkTTS(BaseTTS):
         with open(script_file, 'r') as f:
             for line in f:
                 if not line.startswith("Audio:") and not line.startswith("Image:") and not line.startswith("Title:") and ":" in line:
+                    voice, _ = self.get_character_data(line)
                     voice_text = line.split(":")[1].strip()
                     if is_valid_filename(voice_text):
                         emoji_voice_dict[voice_text] = voice_text
@@ -66,7 +67,10 @@ class BarkTTS(BaseTTS):
                                           voice_text}' from cache.")
                             continue
 
+                        if not voice:
+                            voice = self.voice
+                            
                         voice_file = self.__generate_audio(
-                            audio_model, processor, voice_text)
+                            audio_model, processor, voice_text, voice)
                         emoji_voice_dict[voice_text] = voice_file
         return emoji_voice_dict

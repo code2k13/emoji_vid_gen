@@ -22,7 +22,7 @@ class DefaultTxt2Dialog(BaseText2Dialog):
         if is_valid_filename(text) and type == "text":
             return text
 
-        random_filename = create_temp_file(".png")
+        random_filename = create_temp_file(".png") 
         background_image = Image.open(image_path)
         image = Image.new("RGBA", background_image.size, (0, 0, 0, 0))
         image = image.convert('RGBA')
@@ -32,8 +32,8 @@ class DefaultTxt2Dialog(BaseText2Dialog):
             font = ImageFont.truetype("NotoColorEmoji.ttf", size=self._font_size)
             x = (self.width)//2 - self._font_size//2
             y = self.height - self._font_size - 30
-            seed_image_path = self._cache.get_file_path(
-                unicodedata.name(text[0]))
+            _, seed_image_path = self.get_character_data(text)
+
             if seed_image_path:
                 seeded_character_image = Image.open(seed_image_path)
                 seeded_character_image = seeded_character_image.resize(
@@ -41,11 +41,6 @@ class DefaultTxt2Dialog(BaseText2Dialog):
                 image.paste(seeded_character_image, (x, y),
                             mask=seeded_character_image)
             else:
-                #center = (x+self._font_size-40, y+60)
-                #radius = 100
-                #color = (0, 0, 0, 128)
-                #draw.ellipse((center[0] - radius, center[1] - radius,
-                #              center[0] + radius, center[1] + radius), fill=color)
                 draw.text((x, y), text, fill=(0, 0, 0),
                           font=font, embedded_color=True)
 

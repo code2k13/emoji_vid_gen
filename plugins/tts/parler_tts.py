@@ -1,4 +1,5 @@
 
+from re import I
 from .base_tts import BaseTTS
 from utils.helpers import create_temp_file, is_valid_filename
 from utils.cache import Cache
@@ -33,9 +34,9 @@ class ParlerTTS(BaseTTS):
             else:
                 self.voice = tts_config["voice"]
 
-    def __generate_audio(self, model, tokenizer, text,device):
+    def __generate_audio(self, model, tokenizer, text,device,voice):
         random_filename = create_temp_file(".wav")     
-        input_ids = tokenizer(self.voice, return_tensors="pt").input_ids.to(device)
+        input_ids = tokenizer(voice, return_tensors="pt").input_ids.to(device)
         prompt_input_ids = tokenizer(text, return_tensors="pt").input_ids.to(device)
         generation = model.generate(input_ids=input_ids, prompt_input_ids=prompt_input_ids)
         audio_arr = generation.cpu().numpy().squeeze()
@@ -52,6 +53,7 @@ class ParlerTTS(BaseTTS):
         with open(script_file, 'r') as f:
             for line in f:
                 if not line.startswith("Audio:") and not line.startswith("Image:") and not line.startswith("Title:") and ":" in line:
+                    voice, _ = self.get_character_data(line)
                     voice_text = line.split(":")[1].strip()
                     if is_valid_filename(voice_text):
                         emoji_voice_dict[voice_text] = voice_text
@@ -63,6 +65,9 @@ class ParlerTTS(BaseTTS):
                                           voice_text}' from cache.")
                             continue
 
-                        voice_file = self.__generate_audio(model, tokenizer, voice_text,device)
+                        if not voice:
+                            voice = self.voice
+
+                        voice_file = self.__generate_audio(model, tokenizer, voice_text,device,voice)
                         emoji_voice_dict[voice_text] = voice_file
         return emoji_voice_dict

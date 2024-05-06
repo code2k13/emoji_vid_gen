@@ -6,7 +6,7 @@ from plugins.tts.bark_tts import BarkTTS
 from plugins.txt2img.sdturbo_txt2img import StableDiffusionTxt2Img
 from plugins.txt2audio.audio_ldm_txt2audio import AudioLDMTxt2Audio
 from plugins.txt2dialog.default_txt2dialog import DefaultTxt2Dialog
-from utils.config_manager import ConfigManager
+from utils.plugin_manager import PluginManager
 from rich.console import Console
 
 class ScriptParser:
@@ -16,15 +16,15 @@ class ScriptParser:
         console = Console()
         
         console.print("[green]Loading config ..")
-        config_manager = ConfigManager(config_file)
+        plugin_manager = PluginManager(config_file)
         console.print("[green]Loading text to image plugin ...")        
-        txt2img = config_manager.get_text_to_image_model()
+        txt2img = plugin_manager.get_text_to_image_model()
         console.print("[green]Loading text to audio plugin ...") 
-        txt2audio = config_manager.get_text_to_audio_model()
+        txt2audio = plugin_manager.get_text_to_audio_model()
         console.print("[green]Loading text to dialog plugin ...") 
-        txt2dialog = config_manager.get_text_to_dialog_model()
+        txt2dialog = plugin_manager.get_text_to_dialog_model()
         console.print("[green]Loading text to speech plugin ...") 
-        tts = config_manager.get_text_to_speech_model()
+        tts = plugin_manager.get_text_to_speech_model()
 
         console.print("[yellow]Converting text to speech ...")
         voices_dict = tts.generate_voices(script_path)
