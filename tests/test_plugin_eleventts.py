@@ -100,3 +100,45 @@ class TestElevenLabsTTS(unittest.TestCase):
         self.assertEqual(mock_save.call_count, 3)
 
         mock_save.assert_has_calls([call(audio, "mock_filename.mp3")])
+
+
+    @patch('builtins.open', unittest.mock.mock_open(read_data="Audio:\nTitle:Title1\n🐿️:Text1\n🐶:Hello\n👨‍🚀:Hi"))
+    @patch('plugins.tts.elevenlabs_tts.is_valid_filename', lambda x: False)
+    @patch('plugins.tts.elevenlabs_tts.Cache.get_file_path', lambda x, y:  None)
+    @patch('plugins.tts.elevenlabs_tts.Cache.store_text', lambda x, y, z:  None)
+    @patch('plugins.tts.elevenlabs_tts.create_temp_file', lambda x: None)
+    @patch("plugins.tts.elevenlabs_tts.ElevenLabs.generate")
+    @patch("plugins.tts.elevenlabs_tts.save")
+    def test_if_throws_exception(self, mock_save, mock_generate):
+
+        config = {"global": {"width": 100, "height": 100,
+                             "use_cuda": "true", "characters": [{"name": "🐿️", "voice": "test_voice"},
+                                                                {"name": "🐶", "voice": "test_voice2"}]},
+                  "text_to_speech": {"provider": "elevenlabs", "model": "test_model"}}
+        mock_save.side_effect = Exception("Custom exception message")
+        tts = ElevenLabsTTS(config)
+        mock_generate.return_value = None
+        with self.assertRaises(Exception) as context:
+             tts.generate_voices("mock_script_file") 
+
+
+    @patch('builtins.open', unittest.mock.mock_open(read_data="Audio:\nTitle:Title1\n🐿️:Text1\n🐶:Hello\n👨‍🚀:Hi"))
+    @patch('plugins.tts.elevenlabs_tts.is_valid_filename', lambda x: False)
+    @patch('plugins.tts.elevenlabs_tts.Cache.get_file_path', lambda x, y:  "abc.mp3")
+    @patch('plugins.tts.elevenlabs_tts.Cache.store_text', lambda x, y, z:  None)
+    @patch('plugins.tts.elevenlabs_tts.create_temp_file', lambda x: None)
+    @patch("plugins.tts.elevenlabs_tts.ElevenLabs.generate")
+    @patch("plugins.tts.elevenlabs_tts.save")
+    def test_if_asset_picked_from_cache(self, mock_save, mock_generate):
+        config = {"global": {"width": 100, "height": 100,
+                             "use_cuda": "true", "characters": [{"name": "🐿️", "voice": "test_voice"},
+                                                                {"name": "🐶", "voice": "test_voice2"}]},
+                  "text_to_speech": {"provider": "elevenlabs", "model": "test_model"}}
+         
+        tts = ElevenLabsTTS(config)
+        mock_generate.return_value = None       
+        result = tts.generate_voices("mock_script_file")
+        self.assertEqual(result, {'Text1': 'abc.mp3',
+                         'Hello': 'abc.mp3', 'Hi': 'abc.mp3'})
+        self.assertEqual(mock_generate.call_count,0)
+        self.assertEqual(mock_save.call_count,0)           

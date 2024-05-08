@@ -1,6 +1,5 @@
 from imageio import config
 from moviepy.editor import *
-#from audio_filters import apply_cartoon_sound_effect
 from plugins.tts.espeak_tts import ESpeakTTS
 from plugins.tts.bark_tts import BarkTTS
 from plugins.txt2img.sdturbo_txt2img import StableDiffusionTxt2Img
@@ -75,9 +74,6 @@ class ScriptParser:
                             actors.append(emoji_text)
                         text = line.split(":")[1].strip()
                         audio_file = voices_dict[text]
-                        #TODO: Fix this. Causing audio corruption due to bitrate mismatch.
-                        #audio_file = apply_cartoon_sound_effect(
-                        #    audio_file, actors.index(emoji_text))
                         audio_clip = AudioFileClip(audio_file)
                         text_image_path = txt2dialog.create_dialog(
                             current_image, emoji_text, type="emoji")
