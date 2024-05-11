@@ -90,20 +90,6 @@ Audio: people applauding sound
 ## The Narrator
 The emoji `🎙️` is reserved as narrator. Using it at start of line will cause the system to only generated sound and not output any image on background.
 
-## Seeding character images
-Sometimes you may not want to use emojis as characters in your video. In such cases you can use `seed_character.py` tool as follows
-
-```bash
-python3 seed_character.py add 🐿️  --filename squirrel.png 
-```
-
-The above commands instructs the video generation script to use `squirrel.png` every time the 🐿️ emojis is encountered. It is also possible to remove the character seeding by using:
-
-```bash
-python3 seed_character.py remove 🐿️
-```
-When seeding characters ensure that you use square images, replace background with transparency and ensure images are stored as PNG.
-
 ## Using presets
 
 If you've followed the earlier instructions for video generation, you might have noticed that the default setup uses `espeak` as the text-to-speech engine, resulting in a robotic-sounding output. EmojiVidGen is built with an internal structure comprising of plugins, each capable of modifying how a task is executed or which model is used.
@@ -121,6 +107,8 @@ All presets are stored in `./presets folder`. To create a new preset (say `custo
 python generate_video.py stories/hello.txt hello.mp4 --preset custom_preset
 ```
 
+Note that the `voice`s used in `characters` section should be supported by the selected `text_to_speech` provider. Images should ideally be PNG files with square aspect ration and transparent background.
+
 ## Available Presets
 
 | Preset Name | Description |
@@ -134,6 +122,30 @@ python generate_video.py stories/hello.txt hello.mp4 --preset custom_preset
 | eleven_medium    | Same as local_medium, but uses `ElevenLabs` text to speech API support is enabled. Needs internet and `ELEVEN_API_KEY` variable to be defined in `.env` file. Needs internet and ElevenLabs account.   |
 | parler_medium    | Same as local_medium, but uses `parler` text to speech API support is enabled.|
 
+## Configuring characters 
+Sometimes you may not want to use emojis as characters in your video or use a different voice for each character. This can now be achieved using the `characters` section in preset yaml files. Given below is an example of how such a section might look like: 
+
+```yaml
+global:
+  width: 512
+  height: 512 
+  use_cuda: "false"
+  characters:
+    - name: "🎤"
+      voice: "fable"
+
+    - name: "🐱"
+      image: "/workspace/emoji_vid_gen/cat.png"
+      voice: "alloy"
+
+    - name: "🐶"
+      image: "/workspace/emoji_vid_gen/dog.png"
+      voice: "echo"
+
+text_to_speech:
+  provider: openai
+  voice: Nova
+```
 
 ## Creating custom presets
 

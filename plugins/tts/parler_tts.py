@@ -1,5 +1,4 @@
 
-from re import I
 from .base_tts import BaseTTS
 from utils.helpers import create_temp_file, is_valid_filename
 from utils.cache import Cache
@@ -7,7 +6,7 @@ from rich.console import Console
 from parler_tts import ParlerTTSForConditionalGeneration
 from transformers import AutoTokenizer
 import soundfile as sf
-import torch
+
 
 class ParlerTTS(BaseTTS):
 
@@ -47,8 +46,9 @@ class ParlerTTS(BaseTTS):
     def generate_voices(self, script_file):
         console = Console()
         device = "cuda:0" if self.use_cuda else "cpu"
-        model = ParlerTTSForConditionalGeneration.from_pretrained("parler-tts/parler_tts_mini_v0.1").to(device)
-        tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler_tts_mini_v0.1")
+        model = None
+        tokenzier = None
+
         emoji_voice_dict = {}
         with open(script_file, 'r') as f:
             for line in f:
@@ -67,6 +67,10 @@ class ParlerTTS(BaseTTS):
 
                         if not voice:
                             voice = self.voice
+                            
+                        if model == None:
+                            model = ParlerTTSForConditionalGeneration.from_pretrained("parler-tts/parler_tts_mini_v0.1").to(device)
+                            tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler_tts_mini_v0.1")
 
                         voice_file = self.__generate_audio(model, tokenizer, voice_text,device,voice)
                         emoji_voice_dict[voice_text] = voice_file
